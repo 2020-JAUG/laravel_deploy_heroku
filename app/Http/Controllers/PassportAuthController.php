@@ -10,9 +10,6 @@ class PassportAuthController extends Controller
     //Registro
     public function register(Request $request)
     {
-        if(env('REDIRECT_HTTPS')) {
-            $this->app['request']->server->set('HTTPS', true);
-        }
 
         $this->validate($request, [
             'name' => 'required|min:4',
