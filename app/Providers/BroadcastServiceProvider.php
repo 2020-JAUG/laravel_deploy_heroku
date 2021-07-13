@@ -5,7 +5,6 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\ServiceProvider;
 
-use Illuminate\Routing\UrlGenerator;
 
 class BroadcastServiceProvider extends ServiceProvider
 {
@@ -14,12 +13,8 @@ class BroadcastServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(UrlGenerator $url)
+    public function boot()
     {
-        if(env('REDIRECT_HTTPS')) {
-            $url->formatScheme('https://');
-        }
-
         Broadcast::routes();
 
         require base_path('routes/channels.php');
